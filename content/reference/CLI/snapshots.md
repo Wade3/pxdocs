@@ -119,6 +119,10 @@ Delete volume 'mysnap', proceed ? (Y/N): y
 Volume mysnap successfully deleted.
 ```
 
+#### Restoring Snapshots {#restoring-snapshots}
+
+In order to restore a volume from snapshot, refer to the [volume restore] (/reference/cli/create-and-manage-volumes/#volume-restore) section.
+
 #### Schedule Policy {#schedule-policy}
 
 To create a snapshot policy, use `pxctl sched-policy create` command.
