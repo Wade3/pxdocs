@@ -40,7 +40,6 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:px-lh
 oc adm policy add-scc-to-user anyuid system:serviceaccount:kube-system:px-lh-account
 oc adm policy add-scc-to-user anyuid system:serviceaccount:default:default
 oc adm policy add-scc-to-user privileged system:serviceaccount:kube-system:px-csi-account
-
 ```
 
 ### Prepare a docker-registry credentials secret
