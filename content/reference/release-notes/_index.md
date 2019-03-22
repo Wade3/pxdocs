@@ -6,6 +6,30 @@ keywords: portworx, release notes
 series: reference
 ---
 
+## 2.0.3.2
+
+### Key Fixes
+
+* PWX-8062 - PX cluster running on k8s does not report volumes metrics
+* PWX-8136 - Disable kvproxy audit as it causes the etcd client to trigger unnecessary API requests
+* PWX-8098 - PX fails to start after reboot on system with LVM drives and auto-configured journal device
+
+### Errata
+
+* PWX-8161 - If a LVM partition is added as journal device after node initialization, any subsequent system reboot will need the LVM partition to be made visible before starting PX. This can be done by running "partprobe"
+
+## 2.0.3.1
+
+### Key Fixes
+
+* PWX-8063 - Startup issue with 4.19.0-0.bpo.2-cloud-amd64                                                                      
+* PWX-8060 - Cloud backup restore fails with json unmarshall error                                                  
+* PWX-7989 - Fix licensing issue which was leading to reducing the number of nodes allowed in the cluster. Differentiate between NEW and PRE-EXISTING node failing to join the cluster, and do not cleanup if PRE-EXISTING nodes were the ones causing the failures.                       
+* PWX-7980 - Do not cleanup CloudDrives when the drives are initialized and have labels
+* PWX-7968 - Cloudsnaps cleanup fails because of missing start timestamp in metadata                                                         
+* PWX-7963 - Cloudsnap restore for xfs volumes has wrong fs type                                        
+* PWX-7794 - LIC: Aggressive node-decomissions and "Cluster max capacity" error handling
+
 ## 2.0.3
 
 ### Key Features and Enhancements
