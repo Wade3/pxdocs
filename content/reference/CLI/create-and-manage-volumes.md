@@ -130,6 +130,53 @@ OPTIONS:
    --policy value, --sp value                    policy names separated by comma
 ```
 
+#### Using the --nodes Argument
+
+Adding `--nodes=LocalNode` argument while creating a volume using `pxctl` will place at least one replica of the volume on the node where the command is run.
+
+This is useful when using a script to create a volume locally on a node.
+
+**Command**
+
+```text
+pxctl volume create --nodes=LocalNode localVolume
+```
+
+```
+Volume successfully created: 756818650657204847
+```
+
+Now inspect the volume and check that the volume's replica is on the node where the command was run. The replicas are visible in the _"Replica sets on nodes"_ section.
+
+```text
+pxctl volume inspect localVolume
+```
+
+```
+Volume  :  756818650657204847
+        Name                     :  localVolume
+        Size                     :  1.0 GiB
+        Format                   :  ext4
+        HA                       :  1
+        IO Priority              :  LOW
+        Creation time            :  Mar 20 00:30:05 UTC 2019
+        Shared                   :  no
+        Status                   :  up
+        State                    :  detached
+        Reads                    :  0
+        Reads MS                 :  0
+        Bytes Read               :  0
+        Writes                   :  0
+        Writes MS                :  0
+        Bytes Written            :  0
+        IOs in progress          :  0
+        Bytes used               :  340 KiB
+        Replica sets on nodes:
+                Set 0
+                  Node           : 70.0.29.90 (Pool 1)
+        Replication Status       :  Detached
+```
+
 #### Create with Docker {#create-with-docker}
 
 All `docker volume` commands are reflected into Portworx storage. For example, a `docker volume create`command provisions a storage volume in a Portworx storage cluster.

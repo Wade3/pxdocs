@@ -11,6 +11,10 @@ This topic explains how to install Portworx with Google Kubernetes Engine (GKE).
 
 ## Create a GKE cluster {#create-a-gke-cluster}
 
+{{<info>}} **Image type**: Portworx is supported on GKE cluster provisioned on [Ubuntu Node Images](https://cloud.google.com/kubernetes-engine/docs/node-images). So it is important to specify the node image as **Ubuntu** when creating clusters. {{</info>}}
+
+{{<info>}}**Resource requirements**: Portworx requires that each node in the Kubernetes cluster has at least 4 CPUs and 4 GB memory for Portworx. It is important to keep this in mind when selecting the machine types during cluster creation.{{</info>}}
+
 ### Configure gcloud
 
 If this is your first time running with Google Cloud, please follow this quickstart to install gcloud shell and configure your project and compute zone. If you already have gcloud setup, you can skip this.
@@ -29,8 +33,6 @@ gcloud components update
 
 ### Create your GKE cluster using gcloud
 
-{{<info>}} Portworx is supported on GKE cluster provisioned on [Ubuntu Node Images](https://cloud.google.com/kubernetes-engine/docs/node-images). So it is important to specify the node image as **Ubuntu** when creating clusters. {{</info>}}
-
 You have 2 options in the type of cluster you create: Regional or Zonal. Read [Regional Clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters) to help you make this decision
 
 #### Create a zonal cluster
@@ -43,7 +45,7 @@ gcloud container clusters create px-demo \
     --disk-type=pd-ssd \
     --disk-size=50GB \
     --labels=portworx=gke \
-    --machine-type=n1-standard-4 \
+    --machine-type=n1-highcpu-8 \
     --num-nodes=3 \
     --image-type ubuntu \
     --scopes compute-rw \
@@ -61,7 +63,7 @@ gcloud container clusters create px-demo \
      --disk-type=pd-ssd \
      --disk-size=50GB \
      --labels=portworx=gke \
-     --machine-type=n1-standard-4 \
+     --machine-type=n1-highcpu-8 \
      --num-nodes=3 \
      --image-type ubuntu \
      --scopes compute-rw \

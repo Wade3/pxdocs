@@ -284,11 +284,11 @@ Here are a few steps to perform cloud backups successfully
     NewVol						56706279008755778		2e4d4b67-95d7-481e-aec5-14223ac55170/56706279008755778-725134927222077463		Thu, 17 Jan 2019 00:03:59 UTC		Manual		Done
     ```
 
-### Perform Cloud Backup of group of volumes
+### Perform Cloud Backup of a group of volumes
 
 Portworx 2.0.3 and higher supports backing up multiple volumes to cloud at the same consistency point.
 
-```
+```text
 pxctl cloudsnap backup-group --help
 ```
 ```
@@ -353,6 +353,21 @@ pxctl cloudsnap backup-group --label app=mysql
 Group Cloudsnap backup started successfully with groupID:3b1de846-1078-40e6-ac1a-2e66ef3986d1
 ```
 
+### Extent based cloudsnaps
+
+{{<info>}}This feature is not available in versions prior to 2.0.{{</info>}}
+
+With PX-Enterprise 2.0, Portworx has enhanced the way cloud backups are done. Now, users can resume interrupted backups or restores.
+
+For example, if the node performing backups or restores restarts, the backup/restore will resume once that node becomes operational.
+
+This feature is also available for cloud backups of aggregated volumes. Here are a few points to consider in this regard:
+
+*   For aggregated volumes, aggregated parts are backed up/restored sequentially.
+
+*   Each aggregated part is backed up/restored on one of the nodes where the replica of that aggregated part is provisioned.
+
+*   If not enough nodes are available to create the required aggregation level, aggregated volumes are restored to a non-aggregated volume(i.e. `aggregation=1`).
 
 ### Restore from a Cloud Backup
 
