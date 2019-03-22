@@ -10,13 +10,13 @@ series: reference
 
 ### Key Fixes
 
-PWX-8062 - PX cluster running on k8s does not report volumes metrics
-PWX-8136 - Disable kvproxy audit as it causes the etcd client to trigger unnecessary API requests
-PWX-8098 - PX fails to start after reboot on system with LVM drives and auto-configured journal device
+* PWX-8062 - PX cluster running on k8s does not report volumes metrics
+* PWX-8136 - Disable kvproxy audit as it causes the etcd client to trigger unnecessary API requests
+* PWX-8098 - PX fails to start after reboot on system with LVM drives and auto-configured journal device
 
 ### Errata
 
-PWX-8161 - If a LVM partition is added as journal device after node initialization, any subsequent system reboot will need the LVM partition to be made visible before starting PX. This can be done by running "partprobe"
+* PWX-8161 - If a LVM partition is added as journal device after node initialization, any subsequent system reboot will need the LVM partition to be made visible before starting PX. This can be done by running "partprobe"
 
 ## 2.0.3.1
 
