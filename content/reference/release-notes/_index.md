@@ -6,6 +6,13 @@ keywords: portworx, release notes
 series: reference
 ---
 
+## 2.0.3.2
+
+### Key Fixes
+
+* PWX-8062 - PX cluster running on k8s does not report volumes metrics
+* PWX-8136 - Disable kvproxy audit as it causes the etcd client to trigger unnecessary API requests
+
 ## 2.0.3.1
 
 ### Key Fixes
