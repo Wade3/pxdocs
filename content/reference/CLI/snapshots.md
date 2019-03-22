@@ -121,7 +121,7 @@ Volume mysnap successfully deleted.
 
 #### Restoring Snapshots {#restoring-snapshots}
 
-In order to restore a volume from snapshot, refer to the [volume restore] (/reference/cli/create-and-manage-volumes/#volume-restore) section.
+{{% content "reference/CLI/shared/restore-volume-from-snapshot.md" %}}
 
 #### Schedule Policy {#schedule-policy}
 
