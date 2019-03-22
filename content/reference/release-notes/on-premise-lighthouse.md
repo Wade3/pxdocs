@@ -4,6 +4,12 @@ keywords: portworx, px-enterprise, px-lighthouse, release notes
 meta-description: "Release notes for Lighthouse, the Portworx UI."
 ---
 
+## Lighthouse 2.0.3 Release notes
+
+### Key Fixes
+
+* LD-391 - Lighthouse shows SHARED: FALSE for shared v4 volumes
+
 ## Lighthouse 2.0.2 Release notes
 
 ### Key Fixes
