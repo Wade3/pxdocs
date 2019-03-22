@@ -13,6 +13,10 @@ series: reference
 * PWX-8062 - PX cluster running on k8s does not report volumes metrics
 * PWX-8136 - Disable kvproxy audit as it causes the etcd client to trigger unnecessary API requests
 
+### Errata 
+
+* PWX-8161 - If an lvm partition is added as journal device after node initialization, any subsequent system reboot will need the lvm partition to be made visible to the system using “partprobe”.
+
 ## 2.0.3.1
 
 ### Key Fixes
