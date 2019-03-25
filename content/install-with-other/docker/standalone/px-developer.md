@@ -5,16 +5,18 @@ description: Learn how to run Portworx Developer edition for use with the Docker
 hidden: true
 ---
 
-To install and configure PX Developer edition via the Docker CLI, use the command-line steps in this section.
+To install and configure PX Developer edition via the Docker CLI, use the command-line steps described in this section.
 
-**Important:** PX stores configuration metadata in a KVDB (key/value store), such as Etcd or Consul. We recommend setting up a dedicated kvdb for PX to use. If you want to set one up, see the [etcd example](/reference/knowledge-base/etcd) for PX.
+{{<info>}}
+**Important:** PX stores configuration metadata in a KVDB (key/value store), such as _Etcd_ or _Consul_. We recommend setting up a dedicated kvdb for PX to use. If you want to set one up, see the [etcd example](/reference/knowledge-base/etcd) for PX.
+{{</info>}}
 
 ### Install and configure Docker
 
-PX requires a minimum of Docker version 1.10 to be installed.  Follow the [Docker install](https://docs.docker.com/engine/installation/) guide to install and start the Docker Service.
+PX requires Docker version 1.10 or greater.  Follow the [Docker install](https://docs.docker.com/engine/installation/) guide to install and start the _Docker_ Service.
 
 **Important:**
-If you are running a version prior to Docker 1.12 or running docker on Ubuntu 14.4 LTS, then you *must* configure Docker to allow shared mounts propagation. Please follow [these](/knowledgebase/shared-mount-propagation.html) instructions to enable shared mount propagation.  This is needed because PX runs as a container and it will be provisioning storage to other containers.
+If you are running a version prior to _Docker_ 1.12 or running _Docker_ on Ubuntu 14.4 LTS, then you *must* configure _Docker_ to allow shared mounts propagation. Please follow [these](/knowledgebase/shared-mount-propagation.html) instructions to enable shared mount propagation.  This is needed because PX runs as a container and it will be provisioning storage to other containers.
 
 ### Specify storage
 
@@ -27,13 +29,11 @@ To view the storage devices on your server
 
 Use this command line:
 
-```
+```text
 # lsblk
 ```
 
-Example output:
-
-Note that devices without the partition are shown under the **TYPE** column as **part**.
+The output should look similar to:
 
 ```
 # lsblk
@@ -43,6 +43,10 @@ Note that devices without the partition are shown under the **TYPE** column as *
     xvdb                      202:16   0    64G  0 disk
     xvdc                      202:32   0    64G  0 disk
 ```
+
+{{<info>}}
+Note that devices without the partition are shown under the **TYPE** column as **part**.
+{{</info>}}
 
 Identify the storage devices you will be allocating to PX.  PX can run in a heterogeneous environment, so you can mix and match drives of different types.  Different servers in the cluster can also have different drive configurations.
 
