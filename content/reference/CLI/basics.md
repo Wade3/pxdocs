@@ -58,7 +58,7 @@ sudo /opt/pwx/bin/pxctl -v
 ```
 
 ```
-pxctl version 2.2.0-555ffff
+pxctl version 2.1.0.0-d594892 (OCI)
 ```
 
 #### Help {#help}
@@ -70,39 +70,49 @@ sudo /opt/pwx/bin/pxctl help
 ```
 
 ```
-NAME:
-   pxctl - px cli
+px cli
 
-USAGE:
-   pxctl [global options] command [command options] [arguments...]
+Usage:
+  pxctl [command]
 
-VERSION:
-   1.2.0-75d0dbb
+Available Commands:
+  alerts         px alerts
+  auth           pxctl auth
+  clouddrive     Manage cloud drives
+  cloudmigrate   Migrate volumes across clusters
+  cloudsnap      Backup and restore snapshots to/from cloud
+  cluster        Manage the cluster
+  context        pxctl context
+  credentials    Manage credentials for cloud providers
+  eula           Show license agreement
+  help           Help about any command
+  license        Manage licenses
+  objectstore    Manage the object store
+  role           pxctl role
+  sched-policy   Manage schedule policies
+  secrets        Manage Secrets. Supported secret stores AWS KMS | Vault | DCOS Secrets | IBM Key Protect | Kubernetes Secrets | Google Cloud KMS
+  service        Service mode utilities
+  status         Show status summary
+  storage-policy Manage storage policies for creating volumes
+  upgrade        Upgrade PX
+  volume         Manage volumes
 
-COMMANDS:
-     status         Show status summary
-     volume, v      Manage volumes
-     snap, s        Manage volume snapshots
-     cluster, c     Manage the cluster
-     service, sv    Service mode utilities
-     host           Attach volumes to the host
-     secrets        Manage Secrets
-     upgrade        Upgrade PX
-     eula           Show license agreement
-     cloudsnap, cs  Backup and restore snapshots to/from cloud
-     objectstore    Manage the object store
-     help, h        Shows a list of commands or help for one command
-
-GLOBAL OPTIONS:
-   --json, -j     output in json
-   --color        output with color coding
-   --raw, -r      raw CLI output for instrumentation
-   --help, -h     show help
-   --version, -v  print the version
+Flags:
+      --ca string        path to root certificate for ssl usage
+      --cert string      path to client certificate for ssl usage
+      --color            output with color coding
+      --config string    config file (default is $HOME/.pxctl.yaml)
+      --context string   context name that overrides the current auth context
+  -h, --help             help for pxctl
+  -j, --json             output in json
+      --key string       path to client key for ssl usage
+      --raw              raw CLI output for instrumentation
+      --ssl              ssl enabled for portworx
+  -v, --version          print version and exit
 ```
 
 {{<info>}}
-As seen above, `pxctl` provides the capabilities to perform fine-grained control of the PX resources cluster-wide. Also, it lets the user manage volumes, snapshots, cluster resources, hosts in the cluster and software upgrade in the cluster.
+As seen above, `pxctl` provides the capability to perform fine-grained control of the PX resources cluster-wide. Also, it lets the user manage volumes, snapshots, cluster resources, hosts in the cluster and software upgrade in the cluster.
 {{</info>}}
 
 #### Status {#status}
