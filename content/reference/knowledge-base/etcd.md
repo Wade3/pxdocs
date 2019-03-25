@@ -80,4 +80,34 @@ For a more detailed setup, maintenance and tuning information refer the followin
 * [Maintenance](https://coreos.com/etcd/docs/latest/op-guide/maintenance.html)
 * [Tuning](https://coreos.com/etcd/docs/latest/tuning.html)
 * [Troubleshooting](https://coreos.com/etcd/docs/latest/op-guide/recovery.html)
-* [article](https://www.consul.io/intro/getting-started/join.html) 
+* [Consul](https://www.consul.io/intro/getting-started/join.html) 
+
+### Securing with certificates in Kubernetes
+
+SSL certificates for etcd can be stored as Kubernetes secrets. Three files are required - in this example, the CA certificate is `etcd-ca.crt`, the etcd certificate `etcd.crt` and the etcd key `etcd.key`. These files should be copied to a directory on the Kubernetes master (`etcd-secrets`). Next, create a secret from these files:
+
+```text
+kubectl -n kube-system create secret generic px-etcd-certs --from-file=etcd-secrets/
+```
+```
+secret/px-etcd-certs created
+```
+```text
+kubectl -n kube-system describe secret px-etcd-certs
+```
+```
+Name:         px-etcd-certs
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+etcd-ca.crt:      1679 bytes
+etcd.crt:  1680 bytes
+etcd.key:  414  bytes
+```
+
+Use the [spec generator](https://install.portworx.com/), selecting "Certificate Auth" under the etcd section, ensuring the filenames match those specified.
