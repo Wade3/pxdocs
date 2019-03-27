@@ -14,7 +14,8 @@ To create a high availability storage volume for SQL Server, use 'docker run' wi
 
 ```text
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd' \
-      -p 1433:1433 --volume-driver=pxd \
+      -p 1433:1433 --name sqlserver
+      --volume-driver=pxd \
       -v name=mssqlvol,size=10,repl=3:/var/opt/mssql \
       -d microsoft/mssql-server-linux
 ```
@@ -25,10 +26,11 @@ This command runs an instance of `mssql-server-linux` with a high availability 1
 You can run multiple instances of SQL Server on the same host, each with its own unique persistent volume mapped, and each with its own unique IP address published.
 {{% /info %}}
 
-You can now connect to MS-SQL in its container on port 1433. For example, to access the MS-SQL command prompt via `docker`, run:
+### Connect to SQL Server
+Connect to SQL Server's sqlcmd CLI with `docker exec`.
 
 ```text
-docker exec -it <Container ID> /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "P@ssw0rd" '
+docker exec -it sqlserver /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'P@ssw0rd'
 ```
 
 ### Database recoverability using Snapshots
