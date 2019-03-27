@@ -7,9 +7,7 @@ noicon: true
 ---
 
 
-This page provides instructions for deploying Microsoft SQL Server \(MS-SQL\) with Portworx on Kubernetes.
-
-Use these [Kubernetes specs](https://github.com/portworx/px-docs/tree/gh-pages/k8s-samples/mssql) to deploy MS-SQL.
+This page explains how to deploy Microsoft SQL Server with Portworx via Docker.
 
 To create a highly available storage volume for MS-SQL, without having to provision storage in advance, run this command:
 
@@ -65,4 +63,3 @@ jeff-coreos-2 core # docker inspect --format '{{ .Mounts }}' 46eff5a9cbd6
 ```
 
 For futher reading on running an MS-SQL container image with Docker, refer to [this](https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-linux-2017#a-idpersista-persist-your-data) page.
-
