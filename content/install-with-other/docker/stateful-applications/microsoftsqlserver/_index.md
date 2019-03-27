@@ -33,16 +33,23 @@ Connect to SQL Server's sqlcmd CLI with `docker exec`.
 docker exec -it sqlserver /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'P@ssw0rd'
 ```
 
-### Database recoverability using Snapshots
+### Create a database storage volume snapshot
 
-To take a recoverable snapshot of the `mssql-server` instance for a point in time, use the `pxctl` :
+To take a point-in-time recovery snapshot of the `mssql-server-linux` instance, use  `pxctl volume snapshot create`.
 
-```text
-pxctl snap create mssqlvol --name mssqlvol_snap_0628
-Volume successfully snapped: 342580301989879504
-pxctl snap list
-ID			NAME			SIZE	HA	SHARED	ENCRYPTED	IO_PRIORITY	SCALE	STATUS
-342580301989879504	mssqlvol_snap_0628	10 GiB	3	no	no		LOW		0	up - detached
+```
+$ pxctl volume snapshot create --name mssqlvol_snap_0628
+Volume snap successful: 342580301989879504
+```
+
+The string of digits in the output is the volume ID of the new snapshot. Use the ID (`342580301989879504`), or the name (`mssqlvol_snap_0628`) to refer to the snapshot in subsequent `pxctl` commands.
+
+To list snapshots, use `pxctl volume list --snapshot`.
+
+```
+$ pxctl volume list --snapshot
+ID			NAME			SIZE	HA	SHARED	ENCRYPTED  COMPRESSED	IO_PRIORITY	SCALE	STATUS
+342580301989879504	mssqlvol_snap_0628	10 GiB	3	no	no  no		LOW		0	up - detached
 ```
 
 By default, a Portworx volume snapshot is read-writable. The snapshot taken is visible globally throughout the cluster, and can be used to start another instance of MS-SQL on a different node as below:
