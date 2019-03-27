@@ -21,15 +21,15 @@ docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd' \
 
 This command runs an instance of `mssql-server-linux` with a high availability 10 GiB volume, created without having to provision storage in advance. Specifying `repl=3` guarantees the persistent data will replicate on three separate nodes.
 
+{{% info %}}
+You can run multiple instances of SQL Server on the same host, each with its own unique persistent volume mapped, and each with its own unique IP address published.
+{{% /info %}}
+
 You can now connect to MS-SQL in its container on port 1433. For example, to access the MS-SQL command prompt via `docker`, run:
 
 ```text
 docker exec -it <Container ID> /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "P@ssw0rd" '
 ```
-
-{% hint style="info" %}
-You can run multiple instances of MS-SQL on the same host, each with its own unique persistent volume mapped, and each with its own unique IP address published.
-{% endhint %}
 
 ### Database recoverability using Snapshots
 
