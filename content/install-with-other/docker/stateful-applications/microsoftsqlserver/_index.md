@@ -9,7 +9,8 @@ noicon: true
 
 This page explains how to deploy Microsoft SQL Server with Portworx via Docker.
 
-To create a highly available storage volume for MS-SQL, without having to provision storage in advance, run this command:
+### Create a high availability storage volume for SQL Server
+To create a high availability storage volume for SQL Server, use 'docker run' with the '-v' option:
 
 ```text
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd' \
@@ -18,7 +19,7 @@ docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd' \
       -d microsoft/mssql-server-linux
 ```
 
-This command runs `mssql-server-linux` with a 10 GB volume created dynamically with three-way replication, guaranteeing that persistent data will be fully replicated on three separate nodes.
+This command runs an instance of `mssql-server-linux` with a high availability 10 GiB volume, created without having to provision storage in advance. Specifying `repl=3` guarantees the persistent data will replicate on three separate nodes.
 
 You can now connect to MS-SQL in its container on port 1433. For example, to access the MS-SQL command prompt via `docker`, run:
 
